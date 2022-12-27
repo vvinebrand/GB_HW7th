@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-int programm, num;
+int programm;
 Boolean begin = true;
 
 while (begin)
@@ -22,36 +22,19 @@ while (begin)
             FillArrayRandomNumbers(numbers);
             PrintArray(numbers);
 
-            void FillArrayRandomNumbers(double[,] array)
-            {
-                for (int i = 0; i < array.GetLength(0); i++)
-                {
-                    for (int j = 0; j < array.GetLength(1); j++)
-                    {
-                        array[i, j] = Convert.ToDouble(new Random().Next(-100, 100)) / 10;
-                    }
-                }
-            }
-
-            void PrintArray(double[,] array)
-            {
-                for (int i = 0; i < array.GetLength(0); i++)
-                {
-                    Console.Write("[ ");
-                    for (int j = 0; j < array.GetLength(1); j++)
-                    {
-                        Console.Write(array[i, j] + " ");
-                    }
-                    Console.Write("]");
-                    Console.WriteLine("");
-                }
-            }
-
             break;
 
         case 2:
 
-           
+            int row = ReadInt("Введите индекс строки: ");
+            int columns = ReadInt("Введите индекс столбца: ");
+            int[,] num = new int[6, 8];
+            FillArray2D(num);
+            PrintArray2D(num);
+
+            if (row < num.GetLength(0) && columns < num.GetLength(1)) Console.WriteLine(num[row, columns]);
+            else Console.WriteLine($"{row}{columns} -> такого числа в массиве нет");
+
             break;
 
         case 3:
@@ -63,4 +46,60 @@ while (begin)
             begin = false;
             break;
     }
+}
+
+
+void FillArrayRandomNumbers(double[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            array[i, j] = Convert.ToDouble(new Random().Next(-100, 100)) / 10;
+        }
+    }
+}
+
+void PrintArray(double[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        Console.Write("[ ");
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write(array[i, j] + " ");
+        }
+        Console.Write("]");
+        Console.WriteLine("");
+    }
+}
+
+void FillArray2D(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            array[i, j] = new Random().Next(1, 10);
+        }
+    }
+}
+
+void PrintArray2D(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write(array[i, j] + " ");
+        }
+        Console.WriteLine();
+    }
+    Console.WriteLine();
+}
+
+int ReadInt(string message)
+{
+    Console.Write(message);
+    return Convert.ToInt32(Console.ReadLine());
 }
