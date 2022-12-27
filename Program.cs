@@ -15,10 +15,10 @@ while (begin)
         case 1:
 
             Console.Write("Введите количество строк: ");
-            int linesVol = Convert.ToInt32(Console.ReadLine());
+            int rows = Convert.ToInt32(Console.ReadLine());
             Console.Write("Введите количество столбцов: ");
-            int columnsVol = Convert.ToInt32(Console.ReadLine());
-            double[,] numbers = new double[linesVol, columnsVol];
+            int cols = Convert.ToInt32(Console.ReadLine());
+            double[,] numbers = new double[rows, cols];
             FillArrayRandomNumbers(numbers);
             PrintArray(numbers);
 
