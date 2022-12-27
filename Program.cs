@@ -58,7 +58,40 @@ while (begin)
 
         case 3:
 
-           
+            Console.Write("Введите кол-во строк: ");
+            int a = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите кол-во столбцов: ");
+            int b = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
+            double[,] arr_2 = new double[a, b];
+            double[] sum = new double[b];
+            Random ran = new Random();
+
+            for (int i = 0; i < a; i++)
+            {
+                for (int j = 0; j < b; j++)
+                {
+                    arr_2[i, j] = ran.Next(0, 100);
+
+                    Console.Write(arr_2[i, j] + "\t");
+                }
+                Console.WriteLine();
+            }
+
+            for (int i = 0; i < b; i++)
+            {
+                for (int j = 0; j < a; j++)
+                {
+                    sum[i] += arr_2[j, i];
+                }
+            }
+            Console.WriteLine("-------------------------------------");
+            for (int i = 0; i < b; i++)
+            {
+                Console.Write((sum[i] / a) + "\t");
+            }
+            Console.ReadLine();
+
             break;
 
         default:
