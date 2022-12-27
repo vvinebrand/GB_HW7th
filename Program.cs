@@ -59,11 +59,6 @@ while (begin)
            
             break;
 
-        case 4:
-
-            
-            break;
-
         default:
             begin = false;
             break;
